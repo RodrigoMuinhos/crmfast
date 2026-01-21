@@ -53,6 +53,16 @@ export default function App() {
     setActiveView('dashboard');
   };
 
+  const handleLogout = () => {
+    setDemoEntered(false);
+    setActiveView('dashboard');
+    try {
+      window.localStorage.removeItem('fastmarket-demo-entered');
+    } catch {
+      // ignore
+    }
+  };
+
   const renderView = () => {
     switch (activeView) {
       case 'dashboard':
@@ -77,19 +87,21 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider defaultTheme="light" storageKey="fastmarket-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="fastmarket-theme">
       {demoEntered ? (
         <div className="flex min-h-screen bg-background">
           <Sidebar
             activeView={activeView}
             onViewChange={setActiveView}
             collapsed={sidebarCollapsed}
+            onLogout={handleLogout}
           />
           <main className="flex-1 w-full lg:w-auto pt-16 lg:pt-0">
             <AppHeader
               activeView={activeView}
               sidebarCollapsed={sidebarCollapsed}
               onToggleSidebar={() => setSidebarCollapsed((v) => !v)}
+              onLogout={handleLogout}
             />
             <div className="w-full max-w-[1600px] mx-auto">
               {renderView()}

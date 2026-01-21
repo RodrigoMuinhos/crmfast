@@ -24,12 +24,14 @@ interface SidebarProps {
   activeView: string;
   onViewChange: (view: string) => void;
   collapsed?: boolean;
+  onLogout?: () => void;
 }
 
 export function Sidebar({
   activeView,
   onViewChange,
   collapsed = false,
+  onLogout,
 }: SidebarProps) {
   const [open, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -101,7 +103,11 @@ export function Sidebar({
         {isCollapsed ? (
           <Tooltip>
             <TooltipTrigger asChild>
-              <button className="w-full h-12 flex items-center justify-center px-3 rounded-xl text-sidebar-foreground hover:bg-sidebar-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/50">
+              <button
+                className="w-full h-12 flex items-center justify-center px-3 rounded-xl text-sidebar-foreground hover:bg-sidebar-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+                onClick={onLogout}
+                type="button"
+              >
                 <LogOut size={22} />
                 <span className="sr-only">Sair</span>
               </button>
@@ -111,7 +117,11 @@ export function Sidebar({
             </TooltipContent>
           </Tooltip>
         ) : (
-          <button className="w-full h-12 flex items-center gap-3 px-4 rounded-xl text-sidebar-foreground hover:bg-sidebar-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/50">
+          <button
+            className="w-full h-12 flex items-center gap-3 px-4 rounded-xl text-sidebar-foreground hover:bg-sidebar-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            onClick={onLogout}
+            type="button"
+          >
             <LogOut size={22} />
             <span className="font-medium text-[15px]">Sair</span>
           </button>

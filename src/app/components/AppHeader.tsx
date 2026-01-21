@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react';
+import { ChevronLeft, ChevronRight, LogOut, Moon, Sun } from 'lucide-react';
 import { Button } from './ui/button';
 import { useTheme } from './theme-provider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -43,10 +43,12 @@ export function AppHeader({
   activeView,
   sidebarCollapsed,
   onToggleSidebar,
+  onLogout,
 }: {
   activeView: string;
   sidebarCollapsed: boolean;
   onToggleSidebar: () => void;
+  onLogout: () => void;
 }) {
   const { theme, setTheme } = useTheme();
 
@@ -91,6 +93,16 @@ export function AppHeader({
               </SelectContent>
             </Select>
           )}
+
+          <Button
+            variant="outline"
+            className="h-11"
+            onClick={onLogout}
+            title="Sair"
+          >
+            <LogOut className="h-5 w-5 mr-2" />
+            Sair
+          </Button>
 
           <Button
             variant="outline"
