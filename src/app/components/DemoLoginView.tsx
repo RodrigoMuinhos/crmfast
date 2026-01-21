@@ -28,7 +28,7 @@ export function DemoLoginView({
           <CardHeader className="space-y-1 pb-6">
             <CardTitle className="text-2xl text-center">Entrar</CardTitle>
             <CardDescription className="text-center">
-              Este ambiente é uma demonstração. Não é necessário login.
+              Acesse o painel administrativo do FastMarket.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -37,12 +37,12 @@ export function DemoLoginView({
               className="w-full bg-primary hover:bg-primary/90 h-11 text-base font-semibold"
               onClick={onEnterDemo}
             >
-              Entrar como demonstração
+              Entrar
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
 
             <p className="text-xs text-muted-foreground text-center">
-              Dica: ideal para apresentação — dados são 100% mockados.
+              Bem-vindo! Você já pode começar.
             </p>
           </CardContent>
         </Card>
